@@ -17,4 +17,8 @@ public class ProductService {
     public Product create(Product p){
         return  this.repository.save(p);
     }
+
+    public Product findOneById(int id){
+        return this.repository.findOne(id);
+    }
 }

@@ -37,4 +37,13 @@ public class ProductServiceTest {
         Product after = this.service.create(before);
         assertEquals(1, after.getId());
     }
+
+    @Test
+    public void shouldFetchOneProduct() throws Exception{
+        Product before = new Product();
+        before.setName("JBL");
+        Product after = this.service.findOneById(1);
+        //assertNotNull(after);
+        assertEquals("JBL",after.getName());
+    }
 }
