@@ -21,4 +21,8 @@ public class ProductService {
     public Product findOneById(int id){
         return this.repository.findOne(id);
     }
+
+    public Iterable<Product> findAll(){
+        return this.respostory.findAll();
+    }
 }

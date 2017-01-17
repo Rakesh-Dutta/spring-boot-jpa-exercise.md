@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -42,8 +44,23 @@ public class ProductServiceTest {
     public void shouldFetchOneProduct() throws Exception{
         Product before = new Product();
         before.setName("JBL");
+        before.setDescription("best in quality");
         Product after = this.service.findOneById(1);
         //assertNotNull(after);
         assertEquals("JBL",after.getName());
+    }
+
+    @Test
+    public void shouldFindAllProducts() throws Exception {
+        Product before = new Product();
+        before.setName("headphone");
+        Product after = this.service.create(before);
+        Product second = new Product();
+        second.setName("mi");
+        Product result = this.service.create(second);
+
+        Iterable<Product> products = this.service.findAll();
+        List<Product> list = (List) products;
+        assertEquals(2,list.size());
     }
 }
